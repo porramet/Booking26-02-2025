@@ -28,11 +28,14 @@ class Room extends Model
         'image',
     ];
 
+<<<<<<< HEAD
     public function bookings()
     {
         return $this->hasMany(Booking::class);
     }
 
+=======
+>>>>>>> b260e42e9e58cd2b5bb8aadd1b08e46039d1650e
     public function building()
     {
         return $this->belongsTo(Building::class, 'building_id'); // ระบุ foreign key ให้ชัดเจน
