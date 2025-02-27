@@ -53,8 +53,9 @@ class BookingController extends Controller
                 'reason' => 'nullable|string',
             ]);
 
-            // Check room availability
+            // Check room availability for active bookings
             $conflictingBooking = Booking::where('room_id', $validated['room_id'])
+                ->whereIn('status_id', [1, 2, 3]) // Pending (1), Approved (2), Paid (3)
                 ->where(function($query) use ($validated) {
                     $query->whereBetween('booking_start', [$validated['booking_start'], $validated['booking_end']])
                           ->orWhereBetween('booking_end', [$validated['booking_start'], $validated['booking_end']]);
@@ -122,4 +123,12 @@ class BookingController extends Controller
                 ->withInput();
         }
     }
+
+    public function show($id)
+{
+    $booking = Booking::findOrFail($id); // ค้นหาการจองห้อง
+
+    return view('dashboard.booking_show', compact('booking'));
+}
+
 }

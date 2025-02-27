@@ -60,7 +60,9 @@ Route::middleware(['auth', 'can:admin-only'])->group(function () {
     Route::get('/available-rooms', [BookingController::class, 'getAvailableRooms'])->name('available.rooms');
 Route::post('/create-booking', [BookingController::class, 'store'])->name('create.booking');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    
+    //booking management
+    Route::get('/booking/{id}', [BookingController::class, 'show'])->name('booking.show');
+
     // Room management
     Route::get('/manage-rooms', [ManageRoomsController::class, 'index'])->name('manage_rooms.index');
     Route::get('/manage-rooms/{buildingId}/rooms', [ManageRoomsController::class, 'showRooms'])->name('manage_rooms.show');

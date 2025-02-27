@@ -22,24 +22,27 @@ public function index()
 =======
     public function index()
     {
-        // Fetch all bookings with related data and pass them to the view
-        $bookings = Booking::with(['user', 'building', 'room', 'status'])
-            ->whereNotNull('room_id')
-            ->whereNotNull('building_id')
-            ->whereNotNull('status_id')
-            ->get();
+        // Fetch all bookings with the necessary fields
+        $bookings = Booking::select(
+            'id',
+            'user_id',
+            'external_name',
+            'external_email',
+            'external_phone',
+            'building_id',
+            'room_id',
+            'booking_start',
+            'booking_end',
+            'status_id',
+            'reason',
+            'total_price',
+            'payment_status',
+            'is_external'
+        )->get();
+
         return view('dashboard.booking_db', compact('bookings'));
 >>>>>>> b260e42e9e58cd2b5bb8aadd1b08e46039d1650e
     }
-
-    public function fetchBookings()
-    {
-        // Logic to fetch booking data from the database
-        return Booking::all();
-    }
-
-    public function displayBookings()
-    {
-        // Logic to format and display booking data
-    }
+    
+    
 }
