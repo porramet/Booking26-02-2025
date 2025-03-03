@@ -26,10 +26,11 @@ Route::get('/', function () {
     return view('index');
 });
 Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
-Route::get('/booking/{room_id}', [BookingController::class, 'showBookingForm'])->name('booking.form');
-Route::get('/bookings/{id}', [BookingController::class, 'showBookingForm'])->name('bookings.show');
-Route::get('/booking/{id}', [BookingController::class, 'showBookingForm'])->name('booking.form');
-Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/booking/{room_id}', [BookingController::class, 'showBookingForm'])->name('booking.form');
+    Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
+});
+
 //Route::get('/booking/{room_id}', [BookingController::class, 'store'])->name('booking');
 Route::get('/bookings/{id}', [BookingController::class, 'showBookingForm'])->name('bookings.show');
 
