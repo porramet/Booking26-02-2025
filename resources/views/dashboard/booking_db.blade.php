@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-<<<<<<< HEAD
 <div class="container mx-auto p-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>จัดการการจองห้อง</h2>
@@ -37,7 +36,6 @@
                 <div class="details">
                     <h3>{{ $approvedBookings }}</h3>
                     <p>จำนวนการจองที่อนุมัติแล้ว</p>
-=======
 <div>
     <div class="col-md-10 content">
         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -140,12 +138,10 @@
                             </tbody>
                         </table>
                     </div>
->>>>>>> b260e42e9e58cd2b5bb8aadd1b08e46039d1650e
                 </div>
             </div>
         </div>
     </div>
-<<<<<<< HEAD
     <div class="overflow-x-auto shadow-lg rounded-lg">
         <table class="min-w-full bg-white border border-gray-200">
             <thead class="bg-gray-200">
@@ -190,7 +186,6 @@
                 @endforeach
             </tbody>
         </table>
-=======
+
 </div>
->>>>>>> b260e42e9e58cd2b5bb8aadd1b08e46039d1650e
 @endsection
